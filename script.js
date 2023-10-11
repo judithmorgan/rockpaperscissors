@@ -9,13 +9,27 @@ function checkWinner(playerSelection, computerSelection) {
     } else if ((playerSelection == 'rock' && computerSelection == 'scissors') || (playerSelection == 'paper' && computerSelection == 'rock') ||
         (playerSelection == 'scissors' && computerSelection == 'paper')
     ) {
-        return "You Win and Computer Lose!! YAYYYY"
+        return "Player"
 
     }
     else {
-        return "You Lose and Computer Wins! BOOO"
+        return "Computer"
     }
 }
+
+function playRound(playerSelection, computerSelection) {
+    const result = checkWinner(playerSelection, computerSelection);
+    if (result == "Tie") {
+        return "It's a Tie!"
+    }
+    else if (result === "Player") {
+        return `You Win! ${playerSelection} beats ${computerSelection}`
+    }
+    else {
+        return `You Lose! ${computerSelection} beats ${playerSelection}`
+    }
+}
+
 
 console.log(getComputerChoice());
 
