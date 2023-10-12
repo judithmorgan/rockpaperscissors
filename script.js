@@ -1,7 +1,14 @@
-const options = ['rock', 'paper', 'scissors'];
+const options = ["rock", "paper", "scissors"];
+
 function getComputerChoice() {
-    return options[Math.floor(Math.random() * game.length)];
+    return options[Math.floor(Math.random() * options.length)];
 }
+
+/* function above can be written like this too below
+function getComputerChoice() {
+    const choice = options[Math.floor(Math.random() * options.length)];
+    return choice;
+*/
 
 function checkWinner(playerSelection, computerSelection) {
     if (playerSelection == computerSelection) {
@@ -34,12 +41,13 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     console.log("Welcome!")
     for (let i = 0; i < 5; i++) {
-        const playerSelection = 'rock';
+        const playerSelection = "rock";
         const computerSelection = getComputerChoice();
         console.log(playRound(playerSelection, computerSelection));
     }
 }
 
 game();
+
 
 
