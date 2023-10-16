@@ -1,3 +1,16 @@
+const rockBtn = document.querySelector("#rock");
+//rockBtn.classList.add("playButtons");
+
+// paper button
+const paperBtn = document.querySelector("#paper");
+//paperBtn.classList.add("playButtons");
+// scissors button
+const scissorsBtn = document.querySelector("#scissors");
+//scissorsBtn.classList.add("playButtons");
+
+const outcomeDiv = document.querySelector('.outcome')
+
+
 const options = ["rock", "paper", "scissors"];
 
 function getComputerChoice() {
@@ -9,6 +22,8 @@ function getComputerChoice() {
     const choice = options[Math.floor(Math.random() * options.length)];
     return choice;
 */
+
+
 
 function checkWinner(playerSelection, computerSelection) {
     if (playerSelection == computerSelection) {
@@ -37,6 +52,27 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+rockBtn.addEventListener("click", function () {
+    if (!isGameOver) {
+      playRound("rock", computerPlay());
+      endGame();
+    }
+  });
+  
+  paperBtn.addEventListener("click", function () {
+    if (!isGameOver) {
+      playRound("paper", computerPlay());
+      endGame();
+    }
+  });
+  
+  scissorsBtn.addEventListener("click", function () {
+    if (!isGameOver) {
+      playRound("scissors", computerPlay());
+      endGame();
+    }
+  });
+
 function getPlayerChoice() {
     let validatedInput = false;
     while (validatedInput == false) {
@@ -51,7 +87,7 @@ function getPlayerChoice() {
         }
     }
 }
-
+/*
 function game() {
     let scorePlayer = 0;
     let scoreComputer = 0;
@@ -86,4 +122,4 @@ function game() {
 game();
 
 
-
+*/
