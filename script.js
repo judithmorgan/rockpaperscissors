@@ -37,35 +37,6 @@ let computerScore = 0;
 let isGameOver = false;
 let scoreToReach = 5;
 
-
-function checkWinner(playerSelection, computerSelection) {
-    if (playerSelection == computerSelection) {
-        return 'Tie';
-    } else if ((playerSelection == 'rock' && computerSelection == 'scissors') || (playerSelection == 'paper' && computerSelection == 'rock') ||
-        (playerSelection == 'scissors' && computerSelection == 'paper')
-    ) {
-        return 'Player'
-
-    }
-    else {
-        return 'Computer'
-    }
-}
-
-function playRound(playerSelection, computerSelection) {
-    const result = checkWinner(playerSelection, computerSelection);
-    if (result == 'Tie') {
-        return "It's a Tie!"
-    }
-    else if (result === 'Player') {
-        return `You Win! ${playerSelection} beats ${computerSelection}`
-    }
-    else {
-        return `You Lose! ${computerSelection} beats ${playerSelection}`
-    }
-}
-
-
 // each button calls playRound when clicked
 // each button can call endGame when scoreToReach = 5
 rockBtn.addEventListener("click", function () {
@@ -90,3 +61,16 @@ scissorsBtn.addEventListener("click", function () {
 });
 
 
+
+function playRound(playerSelection, computerSelection) {
+    const result = checkWinner(playerSelection, computerSelection);
+    if (result == 'Tie') {
+        return "It's a Tie!"
+    }
+    else if (result === 'Player') {
+        return `You Win! ${playerSelection} beats ${computerSelection}`
+    }
+    else {
+        return `You Lose! ${computerSelection} beats ${playerSelection}`
+    }
+}
