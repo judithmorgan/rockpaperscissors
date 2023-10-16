@@ -63,14 +63,28 @@ scissorsBtn.addEventListener("click", function () {
 
 
 function playRound(playerSelection, computerSelection) {
-    const result = checkWinner(playerSelection, computerSelection);
-    if (result == 'Tie') {
-        return "It's a Tie!"
+    const newLi = document.createElement("li");
+    newLi.classList.add("newLi");
+    if (
+      (playerSelection === "rock" && computerSelection === "paper") ||
+      (playerSelection === "scissors" && computerSelection === "rock") ||
+      (playerSelection === "paper" && computerSelection === "scissors")
+    ) {
+      newLi.innerText = `You chose ${playerSelection} and the computer chose ${computerSelection}. You lost.`;
+      roundScore.appendChild(newLi);
+      computerScore++;
+      computer.innerText = computerScore;
+    } else if (
+      (playerSelection === "paper" && computerSelection === "rock") ||
+      (playerSelection === "rock" && computerSelection === "scissors") ||
+      (playerSelection === "scissors" && computerSelection === "paper")
+    ) {
+      newLi.innerText = `You chose ${playerSelection} and the computer chose ${computerSelection}. You win!`;
+      roundScore.appendChild(newLi);
+      playerScore++;
+      player.innerText = playerScore;
+    } else if (playerSelection === computerSelection) {
+      newLi.innerText = `You chose ${playerSelection} and the computer chose ${computerSelection}. That's a tie!`;
+      roundScore.appendChild(newLi);
     }
-    else if (result === 'Player') {
-        return `You Win! ${playerSelection} beats ${computerSelection}`
-    }
-    else {
-        return `You Lose! ${computerSelection} beats ${playerSelection}`
-    }
-}
+  }
