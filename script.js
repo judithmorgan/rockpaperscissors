@@ -88,3 +88,18 @@ function playRound(playerSelection, computerSelection) {
       roundScore.appendChild(newLi);
     }
   }
+
+  function endGame() {
+    if (playerScore === scoreToReach || computerScore === scoreToReach) {
+      isGameOver = true;
+      if (playerScore === scoreToReach) {
+        finalScore.innerText = "You won the game! Yay!";
+        player.classList.add("winner");
+        computer.classList.add("loser");
+      } else if (computerScore === scoreToReach) {
+        finalScore.innerText = "You lost the game. Maybe next time.";
+        computer.classList.add("winner");
+        player.classList.add("loser");
+      }
+    }
+  }
