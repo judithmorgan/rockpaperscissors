@@ -1,16 +1,24 @@
 const rockBtn = document.querySelector("#rock");
-//rockBtn.classList.add("playButtons");
+rockBtn.classList.add("playButtons");
 
 // paper button
 const paperBtn = document.querySelector("#paper");
-//paperBtn.classList.add("playButtons");
+paperBtn.classList.add("playButtons");
+
 // scissors button
 const scissorsBtn = document.querySelector("#scissors");
-//scissorsBtn.classList.add("playButtons");
+scissorsBtn.classList.add("playButtons");
 
-const outcomeDiv = document.querySelector('.outcome')
+// new game button
+const newGameBtn = document.querySelector("#newGame");
+newGameBtn.classList.add("newGameButton");
 
+const roundScore = document.querySelector("#roundScore");
+const finalScore = document.querySelector("#finalScore");
+const player = document.querySelector("#player");
+const computer = document.querySelector("#computer");
 
+//const and function returns computer Choice randomly 
 const options = ["rock", "paper", "scissors"];
 
 function getComputerChoice() {
@@ -23,6 +31,11 @@ function getComputerChoice() {
     return choice;
 */
 
+// set initial values for the game
+let playerScore = 0;
+let computerScore = 0;
+let isGameOver = false;
+let scoreToReach = 5;
 
 
 function checkWinner(playerSelection, computerSelection) {
@@ -52,6 +65,9 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+
+// each button calls playRound when clicked
+// each button can call endGame when scoreToReach = 5
 rockBtn.addEventListener("click", function () {
     if (!isGameOver) {
       playRound("rock", computerPlay());
@@ -73,53 +89,18 @@ rockBtn.addEventListener("click", function () {
     }
   });
 
-function getPlayerChoice() {
-    let validatedInput = false;
-    while (validatedInput == false) {
-        const choice = prompt("Rock Paper Scissors");
-        if (choice == null) {
-            continue;
-        }
-        const choiceInLower = choice.toLowerCase();
-        if (options.includes(choiceInLower)) {
-            validatedInput = true;
-            return choiceInLower;
-        }
-    }
-}
-/*
-function game() {
-    let scorePlayer = 0;
-    let scoreComputer = 0;
-    console.log("Welcome!")
-    for (let i = 0; i < 5; i++) {
-        const playerSelection = getPlayerChoice();
-        const computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
-        console.log("-------------")
-        if (checkWinner(playerSelection, computerSelection) == "Player") {
-            scorePlayer++;
-        }
-        else if (checkWinner(playerSelection, computerSelection) == "Computer") {
-            scoreComputer++;
 
-        }
-    }
+  // restart the game by reseting score, clearing score log, and removing classes
 
-    console.log("Game Over")
-    if (scorePlayer > scoreComputer) {
-        console.log("You Win! YAAAA")
-    }
+newGameBtn.addEventListener("click", function () {
+    isGameOver = false;
+    playerScore = 0;
+    computerScore = 0;
+    roundScore.innerText = "";
+    player.innerText = "0";
+    computer.innerText = "0";
+    finalScore.innerText = "";
+    player.classList.remove("winner", "loser");
+    computer.classList.remove("winner", "loser");
+  });
 
-    else if (scoreComputer > scorePlayer) {
-        console.log("You Lose! BOOO")
-
-    }
-    else {
-        console.log("We have a tie!");
-    }
-}
-game();
-
-
-*/
